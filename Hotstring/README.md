@@ -14,6 +14,23 @@ This is a library that adds a dynamic hotstring feature for Autohotkey.
 - `cond` - A name of a function that is to be called everytime the hotstring is triggered. If this function returns a false value or if it returns nothing, the hotstring **is not triggered**.
 
 ##Examples:
+
+```autohotkey
+; Emulate #Hotstring, EndChars `n
+#Include Hotstring\Hotstring.ahk
+
+Hotstring("this", "label",,false)
+return
+
+label:
+Input, endkey, l1 V,,
+if (endkey == "`n"){
+    SendInput, % "{BS " . (StrLen($) + 1) . "}"
+    MsgBox Triggered.
+}
+return
+```
+
 ```autohotkey
 #Include Hotstring.ahk
 
